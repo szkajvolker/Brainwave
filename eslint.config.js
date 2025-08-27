@@ -3,6 +3,7 @@ import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import { defineConfig, globalIgnores } from "eslint/config";
+import tailwindcss from "eslint-plugin-tailwindcss";
 
 export default defineConfig([
   globalIgnores(["dist"]),
@@ -12,7 +13,11 @@ export default defineConfig([
       js.configs.recommended,
       reactHooks.configs["recommended-latest"],
       reactRefresh.configs.vite,
+      tailwindcss.configs.recommended,
     ],
+    plugins: {
+      tailwindcss,
+    },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
