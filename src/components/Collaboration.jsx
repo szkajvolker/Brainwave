@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { brainwave, brainwaveSymbol, check } from "../assets";
 import { collabApps, collabContent, collabText } from "../constants";
 import Button from "./Button";
@@ -48,12 +48,12 @@ const Collaboration = () => {
           </p>
 
           <div
-            className={`mt-2 relative left-1/2 flex w-[22rem] aspect-square border-4 rounded-full -translate-x-1/2 scale:75 md:scale-100  duration-[2s] ease-in-out ${
+            className={`mt-2 relative left-1/2 flex w-[22rem] aspect-square border-4 rounded-full -translate-x-1/2 scale:75 md:scale-100  duration-[1.5s] ease-in-out ${
               curveActivate ? "brightness-110" : "border-n-6"
             }`}
           >
             <div
-              className={`flex w-60 aspect-square m-auto border-4  rounded-full duration-[2s] ease-in-out ${
+              className={`flex w-60 aspect-square m-auto border-4  rounded-full duration-[3s] ease-in-out ${
                 curveActivate ? "brightness-110" : "border-n-6"
               }`}
             >
@@ -67,7 +67,13 @@ const Collaboration = () => {
                   alt="brainwave"
                   className="relative z-10"
                 />
-                <ul className="absolute inset-0 w-full h-full animate-spin [animation-duration:30s]">
+                <ul
+                  className="absolute inset-0 w-full h-full 
+                    animate-spin [animation-duration:30s]"
+                  style={{
+                    animationPlayState: curveActivate ? "running" : "paused",
+                  }}
+                >
                   {collabApps.map((item, index) => (
                     <li
                       key={item.id}
