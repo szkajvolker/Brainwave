@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { brainwaveSymbol, check } from "../assets";
 import { collabApps, collabContent, collabText } from "../../docs";
 import Button from "./Button";
@@ -7,6 +7,7 @@ import { LeftCurve, RightCurve } from "./design/Collaboration";
 
 const Collaboration = () => {
   const [curveActivate, setCurveActivate] = useState(false);
+  const [autoRotate, setAutoRotate] = useState(false);
 
   const handleMouseEnter = () => {
     if (window.innerWidth > 640) setCurveActivate(true);
@@ -14,6 +15,20 @@ const Collaboration = () => {
   const handleMouseLeave = () => {
     if (window.innerWidth > 640) setCurveActivate(false);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setAutoRotate(true);
+      } else {
+        setAutoRotate(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <Section crosses>
@@ -71,7 +86,7 @@ const Collaboration = () => {
                   className="absolute inset-0 w-full h-full 
                     animate-spin [animation-duration:30s]"
                   style={{
-                    animationPlayState: curveActivate ? "running" : "paused",
+                    animationPlayState: curveActivate || autoRotate ? "running" : "paused",
                   }}
                 >
                   {collabApps.map((item, index) => (
