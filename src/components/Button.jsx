@@ -1,4 +1,3 @@
-import ButtonGradient from "../assets/svg/ButtonGradient";
 import ButtonSvg from "../assets/svg/ButtonSvg";
 
 const Button = ({ className, href, onClick, children, px, white, onMouseEnter, onMouseLeave }) => {

@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { brainwave, brainwaveSymbol, check } from "../assets";
+import { useState } from "react";
+import { brainwaveSymbol, check } from "../assets";
 import { collabApps, collabContent, collabText } from "../constants";
 import Button from "./Button";
 import Section from "./Section";
