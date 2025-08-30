@@ -1,5 +1,5 @@
 import { check2, grid, loading1 } from "../assets";
-import { roadmap } from "../constants";
+import { roadmap } from "../../docs";
 import Button from "./Button";
 import { Gradient } from "./design/Roadmap";
 import Heading from "./Heading";

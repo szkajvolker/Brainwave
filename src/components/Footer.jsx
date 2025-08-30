@@ -1,4 +1,4 @@
-import { socials } from "../constants";
+import { socials } from "../../docs";
 import Section from "./Section";
 
 const Footer = () => {
